@@ -1,0 +1,282 @@
+---
+title: "Announcing Rosa"
+author: Richard Bamattre
+output: 
+  prettydoc::html_pretty:
+    theme: tactile
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(lubridate)
+library(babynames)
+library(factoextra)
+library(gghighlight)
+library(ggthemes)
+library(waffle)
+library(png)
+library(grid)
+library(gridExtra)
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+## Add image to plots
+img <- readPNG("rosa2.png")
+```
+
+A quick announcement that Rosa was born on August 7, 2020 at 9:39 AM.
+
+Family and friends: see our [Baby Instagram](https://www.instagram.com/bamacchetti/) for pictures.
+
+Now for the numbers and context.
+
+## Her stats
+
+First of all, her basic statistics. Everyone asks this first about babies - how heavy and how long? It's helpful to put these numbers in context by looking at how Rosa compares with other Caucasian babies. 
+
+I pulled some data from [this article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2802014/) by Janssen et al. in 2017, since it looks at the variation in baby weight across ethnicities. It also gave me the numbers I needed to create a picture of the average weight and height.
+
+At 3.3 kilos (7 lbs 5 oz) Rosa sits comfortably around the average. If all babies were exactly the same size, we wouldn't have a distribution here (the "bell curve" below). We probably wouldn't have that many types of sports either if humans had the same body type.
+
+```{r weight}
+ggplot(data.frame(x = c(1,6)), aes(x)) +
+    # plotting without data
+  stat_function(fun = dnorm, args = list(mean = 3.455, sd = .434),
+                size = 2, alpha = 0.3) +
+    # Add normal curve here - babies in BC at 39 weeks
+  geom_vline(xintercept = 3.3, color = "#CC6677", size = 2) +
+  theme_fivethirtyeight() +
+  labs(title = "Slightly small but full of energy", # "Weighing in at 3.3 kilograms (7 lbs 5 oz)",
+       subtitle = "A bit below average (Janssen et al. 2007) but full of energy",
+       x = "Weight in Kilograms") +
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        panel.grid.major.y = element_blank()) +
+  scale_x_continuous(n.breaks = 6) +
+  annotation_custom(rasterGrob(img),
+                    xmin = 2, xmax = 3, ymin = .3, ymax = 1) +
+  annotate("text", x = 2.5, y = .85, 
+           label = "Rose clocks in at\n 3.3. kilos (7 lbs 5 oz)",
+           color = "#CC6677")
+```
+
+Length wise, though, Rosa is somewhat above the average.
+
+```{r length}
+ggplot(data.frame(x = c(40, 60)), aes(x)) +
+  # plotting without data
+  stat_function(fun = dnorm, args = list(mean = 49.4, sd = 1.7), 
+                size = 2, alpha = 0.3) +
+  # Add normal curve here - babies in BC at 39 weeks
+  geom_vline(xintercept = 51.3, color = "#CC6677", size = 2) +
+  theme_fivethirtyeight() +
+  labs(title = "Longer than average",
+       subtitle = "Above average (Janssen et al. 2007), maybe not a basketball player",
+       x = "Length in centimeters") +
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        panel.grid.major.y = element_blank()) +
+  scale_x_continuous(n.breaks = 6) +
+  annotation_custom(rasterGrob(img),
+                    xmin = 50, xmax = 60, ymin = .1, ymax = .175) +
+  annotate("text", x = 55, y = .2, 
+           label = "Rosa clocks in at\n 3.3. kilos (7 lbs 5 oz)",
+           color = "#CC6677")
+
+```
+
+## What's in a name?
+
+Rosa was named after her great grandmother. Her name is pronounced differently in Portuguese than how it would sound in English, mainly the "R" sound. It's tricky. See the pronunciation of Rosa [here](https://www.infopedia.pt/dicionarios/lingua-portuguesa/rosa) and a breakdown of the "R" sound [here](https://youtu.be/3jdovKE2f4I?t=366).
+
+## How common is Rosa as a name?
+
+In the United States in 2017, around 400 Rosas were born, which is 0.02% of all children that year. 
+
+The big question is: What is the possibility that Rosa will be in a class with someone with the same name? And have to go by Rosa S. and always get confused with another kid?
+
+It turns out the chance Rosa will be in a class with another Rosa is about 1 in 200. Which is pretty unlikely. (Assuming classes are 20 kids and the popularity of names in 2020 is similar to 2017).
+
+```{r common name}
+rosa <- c(1, 199)
+
+waffle(rosa, rows = 10,
+       colors = c("#CC6677", "lightgray")) +
+  labs(title = "Rosa is a fairly unique name in the US",
+       subtitle = "1 in 200 chances she'll be in a class with another Rosa") +
+  theme_fivethirtyeight() +
+  theme(axis.text = element_blank(),
+        legend.position = "none",
+        plot.background = element_rect(fill = "white"))
+```
+
+Unfortunately for girls named Emma, the most popular name in 2017 (and 1% of all babies), their chances are 1 in 5.
+
+```{r common name 2, fig.width=4, fig.height=2}
+emma <- c(1, 4)
+
+waffle(emma, rows = 1,
+       colors = c("#44AA99", "lightgray")) +
+  labs(title = "Emma is a very common name",
+       subtitle = "1 in 5 chances") +
+  theme_fivethirtyeight() +
+  theme(axis.text = element_blank(),
+        legend.position = "none",
+        plot.background = element_rect(fill = "white"))
+```
+
+## How popular was the name Rosa over time?
+
+Rosa is a pretty classic name, dating back to 1880, when Social Security records were first available to track baby names over time, and before then.
+
+It peaked in popularity in two decades: the 1920s and 1950s. Perhaps the influence of Rosa Luxemburg and Rosa Parks?
+
+```{r name, fig.width=8}
+#head(babynames)
+
+babynames %>% filter(name == "Rosa", sex == "F") %>%
+  ggplot(aes(year, n)) +
+    geom_line(color = "#CC6677", size = 2) +
+    #geom_smooth(span = 0.2, se = FALSE, color = "red") +
+    theme_fivethirtyeight() +
+    labs(title = "Rosa as a name was most popular in the 1920s and 1950s",
+         subtitle = "Source: United States Social Security Administration",
+         x = "Year", y = "Number of baby girls") +
+    annotation_custom(rasterGrob(img),
+                      xmin = 1970, xmax = 1995, ymin = 1500, ymax = 1900)
+```
+
+## What kind of names are similar?
+
+Given the popularity of Rosa over time, are there names with the similar trend? It seems Miriam is a close contender, along with Priscilla. Jenny (as opposed to Jennifer) had a similar trend, but peaked in the 1970s.
+
+Thanks to [this analysis](https://rpubs.com/jalapic/babynames) for the inspiration and the code.
+
+```{r name2}
+# Pivot to do a PCA
+# https://rpubs.com/jalapic/babynames
+
+babywide <- babynames %>%
+  filter(sex == "F") %>%
+  select(name, year, n) %>%
+  pivot_wider(names_from = year, values_from = n, values_fill = 0) %>%
+  column_to_rownames("name")
+
+set.seed(123)
+baby_kmeans <- kmeans(babywide, 9)
+
+# check out names
+#table(baby_kmeans$cluster)
+
+# uncommon names get pulled into one large cluster
+odd_names <- names(baby_kmeans$cluster[baby_kmeans$cluster == 2])
+
+# or, find the cluster with Rosa in it
+cluster_name <- names(baby_kmeans$cluster[baby_kmeans$cluster == 5])
+
+# filter out uncommon names or limit to one cluster
+babywide_common <- babywide %>%
+  rownames_to_column("name") %>%
+  #filter(!name %in% odd_names) %>%
+  filter(name %in% cluster_name) %>%
+  column_to_rownames("name")
+
+# new kmeans
+set.seed(123)
+cbaby_kmeans <- kmeans(babywide_common, 6)
+
+#table(cbaby_kmeans$cluster)
+
+babylong <- data.frame(babywide_common, cbaby_kmeans$cluster) %>%
+  rownames_to_column("name") %>%
+  rename(cluster = cbaby_kmeans.cluster) %>%
+  pivot_longer(-c(cluster, name), names_to = "year", values_to = "n") %>%
+  mutate(year = as.numeric(str_remove(year, "X")))
+  
+#filter(babylong, name == "Rosa")
+
+# sample 10 other names in the same cluster
+set.seed(125)
+other_names <- babylong %>% 
+  filter(cluster == 5) %>% # insert cluster number here
+  distinct(name) %>% 
+  sample_n(10) %>%
+  pluck("name")
+```
+```{r comparable names, fig.width=11, fig.height=7}
+babylong %>%
+  #filter(cluster == 2) %>%
+  filter(name %in% other_names | name == "Rosa") %>%
+  ggplot(aes(year, n, group = name, color = name)) +
+    geom_line(size = 2) +
+    gghighlight(name %in% c("Rosa", "Miriam", "Priscilla", "Jenny", "Cassidy"), 
+                label_key = name, unhighlighted_params = list(alpha = 0)) +
+    scale_y_log10() +
+    theme_fivethirtyeight() +
+    scale_color_ptol() +
+    labs(title = "A few other names follow the same trend as Rosa",
+         subtitle = "Unlike Cassidy, Rosa was consistently popular for the last century",
+         x = "Year", y = "Number of baby girls")
+```
+
+## How the parents are doing
+
+Inadvertently I had my smart watch on during the birth, which captured my heart rate over time.
+
+```{r hr, fig.width=9, fig.height=5}
+hr <- read_csv("withings_data/raw_tracker_hr.csv")
+
+hr2 <- hr %>%
+  mutate(value2 = str_remove_all(value, "\\[|\\]") %>%
+           str_split(",") %>% 
+           map(1) %>%
+           unlist() %>%
+           as.numeric())
+
+hr2 %>%
+  filter(start > mdy_h("08-07-2020 0") & start < mdy_h("08-07-2020 24")) %>%
+  ggplot(aes(start, value2)) +
+    geom_line(aes(alpha = value2), color = "gray", size = 1.5) +
+    geom_smooth(se = FALSE, linetype = 2, size = 1, color = "gray") +
+    geom_vline(xintercept = mdy_hm("08-07-2020 09:39"),
+               color = "#CC6677", size = 2) +
+    annotation_custom(rasterGrob(img),
+                     xmin = mdy_h("08-07-2020 10"), 
+                     xmax = mdy_h("08-07-2020 14"), 
+                     ymin = 110, ymax = 130) +
+    theme_fivethirtyeight() +
+    labs(title = "Father's heart rate before, during, and after Rosa's birth",
+         subtitle = "Measured in beats per minute, with time of day in 24 hour time") +
+    scale_x_datetime(date_labels = "%H", date_breaks = "2 hours")
+```
+
+The smartwatch also tracks sleep, which gives a pretty accurate portrayal of pre and post-partum sleep habits. However, the watch can only record sleep that is longer than 3 hours per stint.
+
+```{r sleep}
+sleep <- read_csv("withings_data/sleep.csv")
+
+sleep2 <- sleep %>%
+  mutate(date = as.Date(from),
+         amount = as.numeric(difftime(to, from, "hours")))
+
+sleep2 %>%
+  filter(month(date) == 8,
+         day(date) < 12) %>%
+  ggplot(aes(date, amount, fill = amount)) +
+    geom_col(color = "black") +
+    theme_fivethirtyeight() +
+    theme(legend.position = "none") +
+    scale_y_continuous(breaks = seq(0, 10, by = 2),
+                       ) +
+    scale_fill_distiller(palette = "RdYlGn", direction = 1) +
+    scale_x_date(date_breaks = "1 day", date_labels = "%d",
+                 expand = c(0.01, 0)
+                 ) +
+    labs(title = "Father's nightly sleep in hours, during August",
+         subtitle = "Can you guess the birth date?")
+```
+
+
+Welcome to the world, Rosa! There will be lots of adventures, numbers, and trends out there for you to explore.
+
+Created by [Richard Bamattre](https://twitter.com/rbamattre). My partner says I have too much time on my hands since taking paternity leave.
