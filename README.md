@@ -3,6 +3,8 @@ Announcing Rosa
 
 A quick announcement that Rosa was born on August 7, 2020 at 9:39 AM.
 
+![Rosa](https://github.com/bamattre/babyrosa/blob/master/rosa2.png)
+
 Family and friends: see our [Baby
 Instagram](https://www.instagram.com/bamacchetti/) for pictures.
 
