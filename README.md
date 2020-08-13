@@ -106,4 +106,6 @@ pretty tough.
 Welcome to the world, Rosa\! There will be lots of adventures, numbers,
 and trends out there for you to explore.
 
+-----
+
 Created by [Richard Bamattre](https://twitter.com/rbamattre).
