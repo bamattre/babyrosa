@@ -93,9 +93,9 @@ baby for the first time.
 ![](announcing_rosa_files/figure-gfm/hr-1.png)<!-- -->
 
 My watch also tracks sleep, which gives a pretty accurate portrayal of
-pre and post-partum sleep habits. However, the watch can only record
-sleep that is longer than 3 hours per stint - the 9th and 10th were
-pretty tough.
+pre and post-partum sleep habits (okay, on the dad's side). However, the 
+watch can only record sleep that is longer than 3 hours per stint - 
+the 9th and 10th were pretty tough.
 
 ![](announcing_rosa_files/figure-gfm/sleep-1.png)<!-- -->
 
