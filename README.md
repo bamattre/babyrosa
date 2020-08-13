@@ -1,6 +1,5 @@
 Announcing Rosa
 ================
-Richard Bamattre
 
 A quick announcement that Rosa was born on August 7, 2020 at 9:39 AM.
 
@@ -11,20 +10,19 @@ Now for the numbers and context.
 
 ## Her stats
 
-First of all, her basic statistics. Everyone asks this first about
-babies - how heavy and how long? It’s helpful to put these numbers in
-context by looking at how Rosa compares with other Caucasian babies.
+First of all, her basic statistics. These are the first questions almost
+everyone has about babies - how heavy and how long? It’s helpful to put
+these numbers in context by looking at how Rosa compares with other
+Caucasian babies.
 
-I pulled some data from [this
+At **3.3 kilos (7 lbs 5 oz)** Rosa sits comfortably around the average.
+If all babies were exactly the same size, we wouldn’t have a
+distribution here (the “bell curve” below). We probably wouldn’t have
+that many types of sports either if humans had the same body type.
+
+I used data from [this
 article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2802014/) by
-Janssen et al. in 2017, since it looks at the variation in baby weight
-across ethnicities. It also gave me the numbers I needed to create a
-picture of the average weight and height.
-
-At 3.3 kilos (7 lbs 5 oz) Rosa sits comfortably around the average. If
-all babies were exactly the same size, we wouldn’t have a distribution
-here (the “bell curve” below). We probably wouldn’t have that many types
-of sports either if humans had the same body type.
+Janssen et al. (2017).
 
 ![](announcing_rosa_files/figure-gfm/weight-1.png)<!-- -->
 
@@ -34,9 +32,10 @@ Length wise, though, Rosa is somewhat above the average.
 
 ## What’s in a name?
 
-Rosa was named after her great grandmother. Her name is pronounced
-differently in Portuguese than how it would sound in English, mainly the
-“R” sound. It’s tricky. See the pronunciation of Rosa
+Rosa was named after her great grandmother. Her name follows the
+Portuguese pronounciation, which differs mainly in the “R” - it’s
+different than in English or the rolling R in Spanish. It’s tricky. See
+the pronunciation of Rosa
 [here](https://www.infopedia.pt/dicionarios/lingua-portuguesa/rosa) and
 a breakdown of the “R” sound [here](https://youtu.be/3jdovKE2f4I?t=366).
 
@@ -45,13 +44,15 @@ a breakdown of the “R” sound [here](https://youtu.be/3jdovKE2f4I?t=366).
 In the United States in 2017, around 400 Rosas were born, which is 0.02%
 of all children that year.
 
-The big question is: What is the possibility that Rosa will be in a
-class with someone with the same name? And have to go by Rosa S. and
+The big question is: **What is the possibility that Rosa will be in a
+class with someone with the same name?** And have to go by Rosa S. and
 always get confused with another kid?
 
 It turns out the chance Rosa will be in a class with another Rosa is
-about 1 in 200. Which is pretty unlikely. (Assuming classes are 20 kids
-and the popularity of names in 2020 is similar to 2017).
+about **1 in 200**. Which is pretty unlikely.
+
+Here I’m assuming classes are 20 kids and the popularity of names in
+2020 is similar to 2017.
 
 ![](announcing_rosa_files/figure-gfm/common%20name-1.png)<!-- -->
 
@@ -62,9 +63,8 @@ Unfortunately for girls named Emma, the most popular name in 2017 (and
 
 ## How popular was the name Rosa over time?
 
-Rosa is a pretty classic name, dating back to 1880, when Social Security
-records were first available to track baby names over time, and before
-then.
+Rosa is a pretty classic name, going at least back to 1880, when the
+Social Security Administration started tracking baby names.
 
 It peaked in popularity in two decades: the 1920s and 1950s. Perhaps the
 influence of Rosa Luxemburg and Rosa Parks?
@@ -73,9 +73,11 @@ influence of Rosa Luxemburg and Rosa Parks?
 
 ## What kind of names are similar?
 
-Given the popularity of Rosa over time, are there names with the similar
-trend? It seems Miriam is a close contender, along with Priscilla. Jenny
-(as opposed to Jennifer) had a similar trend, but peaked in the 1970s.
+**Given the popularity of Rosa over time, are there names with a similar
+trend?** It seems Miriam is a close contender, along with Priscilla.
+Jenny (as opposed to Jennifer) had a similar trend, but peaked in the
+1970s. Cassidy is an example of a name that is relatively new, but like
+the other names, is less popular since the 2000s.
 
 Thanks to [this analysis](https://rpubs.com/jalapic/babynames) for the
 inspiration and the code.
@@ -85,15 +87,19 @@ inspiration and the code.
 ## How the parents are doing
 
 Inadvertently I had my smart watch on during the birth, which captured
-my heart rate over time.
+my heart rate over time. It’s no surprise it went up after we saw the
+baby for the first time.
 
 ![](announcing_rosa_files/figure-gfm/hr-1.png)<!-- -->
 
-The smartwatch also tracks sleep, which gives a pretty accurate
-portrayal of pre and post-partum sleep habits. However, the watch can
-only record sleep that is longer than 3 hours per stint.
+My watch also tracks sleep, which gives a pretty accurate portrayal of
+pre and post-partum sleep habits. However, the watch can only record
+sleep that is longer than 3 hours per stint - the 9th and 10th were
+pretty tough.
 
 ![](announcing_rosa_files/figure-gfm/sleep-1.png)<!-- -->
+
+-----
 
 Welcome to the world, Rosa\! There will be lots of adventures, numbers,
 and trends out there for you to explore.
