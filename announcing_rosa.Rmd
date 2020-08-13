@@ -244,6 +244,7 @@ hr2 %>%
                      xmax = mdy_h("08-07-2020 14"), 
                      ymin = 110, ymax = 130) +
     theme_fivethirtyeight() +
+    theme(legend.position = "none") +
     labs(title = "Father's heart rate before, during, and after Rosa's birth",
          subtitle = "Measured in beats per minute, with time of day in 24 hour time") +
     scale_x_datetime(date_labels = "%H", date_breaks = "2 hours")
