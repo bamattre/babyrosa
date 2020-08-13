@@ -106,5 +106,4 @@ pretty tough.
 Welcome to the world, Rosa\! There will be lots of adventures, numbers,
 and trends out there for you to explore.
 
-Created by [Richard Bamattre](https://twitter.com/rbamattre). My partner
-says I have too much time on my hands since taking paternity leave.
+Created by [Richard Bamattre](https://twitter.com/rbamattre).
